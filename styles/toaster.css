@@ -1,0 +1,28 @@
+.toaster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: calc(100vw - 2rem);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    margin: auto;
+    position: none;
+}
+
+.toast {
+    font-weight: 500;
+    color: var(--color-text-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+}
+
+.toast--success {
+    background-color: var(--color-green-600);
+}
+
+.toast--error {
+    background-color: var(--color-red-600);
+}
