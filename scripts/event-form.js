@@ -22,6 +22,7 @@ export function initEventForm(toaster){
     });
 
     return {
+        formElement,
         reset(){
             formElement.reset();
         }

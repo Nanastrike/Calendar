@@ -36,7 +36,7 @@ export function initDialog(name){
     });
 
     return {
-        dialogElement: dialogElement,
+        dialogElement,
         open(){
             dialogElement.showModal();
         },

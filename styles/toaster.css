@@ -10,6 +10,7 @@
     bottom: 1rem;
     margin: auto;
     position: none;
+    pointer-events: none;
 }
 
 .toast {
@@ -17,6 +18,7 @@
     color: var(--color-text-light);
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius-md);
+    animation: toast-in var(--duration-md) ease, toast-out var(--duration-md) ease var(--duration-2xl);
 }
 
 .toast--success {
@@ -25,4 +27,26 @@
 
 .toast--error {
     background-color: var(--color-red-600);
+}
+
+@keyframes toast-in{
+    from{
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes toast-out{
+    from{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
 }
