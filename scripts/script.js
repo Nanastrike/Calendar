@@ -4,6 +4,7 @@ import { initEventFormDialog } from "./event-form-dialog.js";
 import { initEventStore } from "./event-store.js";
 import { initNotification } from "./notification.js";
 import {initCalendar} from "./calender.js";
+import { initNav } from "./nav.js";
 
 initEventStore();
 initCalendar();
@@ -11,3 +12,4 @@ initEventCreateButton();
 initEventFormDialog();
 initNotification();
 initViewSelect();
+initNav();

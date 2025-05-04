@@ -56,6 +56,10 @@
     border-right: 0;
 }
 
+.month-calendar__day--hgihlight{
+    background-color: var(--color-blue-50);
+}
+
 .month-calendar--four-week .month-calendar__day:nth-child(n+22){
     border-bottom: 0;
 }
