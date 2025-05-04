@@ -1,5 +1,6 @@
 import { generateMonthCalendarDays,today,isTheSameDay } from "./date.js";
-
+import { initEventList } from "./event-list.js";
+import { isEventAllDay,eventStartsBefore } from "./event.js";
 
 const calendarTemplateElement = document.querySelector("[date-template='month-calendar']");
 const calendarDayTemplateElement = document.querySelector("[date-template='month-calendar-day']");
@@ -10,7 +11,7 @@ const calendarWeekClasses = {
     6:"six-week"
 };
 
-export function initMonthCalendar(parent,selectedDate){
+export function initMonthCalendar(parent,selectedDate,eventStore){
     const calendarContent = calendarTemplateElement.content.cloneNode(true);
     const calendarElement = calendarContent.querySelector("[date-month-calendar]");
     const calendarDayListElement = calendarElement.querySelector("[date-month-calendar-day-list]");
@@ -22,12 +23,15 @@ export function initMonthCalendar(parent,selectedDate){
     calendarElement.classListt.add(calendarWeekClass);
 
     for(const calendarDay of calendarDays){
-        initCalendarDay(calendarDayListElement,calendarDay);
+        const events = eventStore.getEventsByDate(calendarDay);
+        sortCalendarDayEvents(events);
+
+        initCalendarDay(calendarDayListElement,calendarDay,events);
     }
     parent.appendChild(calendarElement);
 }
 
-function initCalendarDay(parent, calendarDay){
+function initCalendarDay(parent, calendarDay,events){
     const calendarDayContent = calendarDayTemplateElement.content.cloneNode(true);
     const calendarDayElement = calendarDayContent.querySelector("[date-month-calendar-day]");
     const calendarDayLabelElement = calendarDayContent.querySelector("[date-month-calendar-day-label]");
@@ -37,5 +41,21 @@ function initCalendarDay(parent, calendarDay){
     }
 
     calendarDayLabelElement.textContent = calendarDay.getDate();
+
+    initEventList(calendarDayElement,events);
     parent.appendChild(calendarDayElement);
+}
+
+function sortCalendarDayEvents(events){
+    events.sort((eventA,eventB)=>{
+        if(isEventAllDay(eventA)){
+            return -1;
+        }
+
+        if(isEventAllDay(eventB)){
+            return 1;
+        }
+
+        return eventStartsBefore(eventA,eventB) ? -1 :1;
+    });
 }

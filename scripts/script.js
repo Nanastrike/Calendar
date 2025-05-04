@@ -6,8 +6,8 @@ import { initNotification } from "./notification.js";
 import {initCalendar} from "./calender.js";
 import { initNav } from "./nav.js";
 
-initEventStore();
-initCalendar();
+const eventStore = initEventStore();
+initCalendar(eventStore);
 initEventCreateButton();
 initEventFormDialog();
 initNotification();
