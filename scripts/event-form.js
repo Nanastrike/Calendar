@@ -1,48 +1,67 @@
 import { validateEvent } from "./event.js";
 
-export function initEventForm(toaster){
+export function initEventForm(toaster) {
     const formElement = document.querySelector("[data-event-form]");
 
-    formElement.addEventListener("submit",(event)=>{
+    let mode = "create";
+
+    formElement.addEventListener("submit", (event) => {
         event.preventDefault();
         const formEvent = formIntoEvent(formElement);
         const validationError = validateEvent(formEvent);
-
-        if(validateEvent !== null){
+        if (validationError !== null) {
             toaster.error(validationError);
             return;
         }
 
-        formElement.dispatchEvent(new CustomEvent("event-create",{
-            detail:{
-                event:formEvent
-            },
-            bubbles:true
-        }));
+        if (mode === "create") {
+            formElement.dispatchEvent(new CustomEvent("event-create", {
+                detail: {
+                    event: formEvent
+                },
+                bubbles: true
+            }));
+        }
+
+        if (mode === "edit") {
+            formElement.dispatchEvent(new CustomEvent("event-edit", {
+                detail: {
+                    event: formEvent
+                },
+                bubbles: true
+            }));
+        }
     });
 
     return {
         formElement,
-        fillWithDate(date,startTime,endTime){
-            fillFormWithDate(formElement,date,startTime,endTime);
+        switchToCreateMode(date, startTime, endTime) {
+            mode = "create";
+            fillFormWithDate(formElement, date, startTime, endTime);
         },
-        reset(){
+        switchToEditMode(event) {
+            mode = "edit";
+            fillFormWithEvent(formElement, event);
+        },
+        reset() {
+            formElement.querySelector("#id").value = null;
             formElement.reset();
         }
     };
 }
 
-function fillFormWithDate(formElement,date,startTime,endTime){
+
+function fillFormWithDate(formElement, date, startTime, endTime) {
     const dateInputElement = formElement.querySelector("#date");
     const startTimeSelectElement = formElement.querySelector("#start-time");
     const endTimeSelectElement = formElement.querySelector("#end-time");
 
-    dateInputElement.value = date.toISOString().substr(0,10);
+    dateInputElement.value = date.toISOString().substr(0, 10);
     startTimeSelectElement.value = startTime;
     endTimeSelectElement.value = endTime;
 }
 
-function formIntoEvent(formElement){
+function formIntoEvent(formElement) {
     const formDate = new FormData(formElement);
     const title = formDate.get("title");
     const date = formDate.get("date");
@@ -50,11 +69,11 @@ function formIntoEvent(formElement){
     const endTime = formDate.get("end-time");
     const color = formDate.get("color");
 
-    const event ={
+    const event = {
         title,
         date: new Date(date),
-        startTime: Number.parseInt(startTime,10),
-        endTime:Number.parseInt(endTime,10),
+        startTime: Number.parseInt(startTime, 10),
+        endTime: Number.parseInt(endTime, 10),
         color
     };
 

@@ -21,7 +21,7 @@ export function initCalendar(eventStore) {
             initWeekCalendar(calendarElement,selectedDate,eventStore,true);
         }
 
-        calendarElement.querySelector("[data-calendar-scrollable]").scrollTop({top:scrollTop});
+        calendarElement.querySelector("[data-calendar-scrollable]").scrollTo({top:scrollTop});
     }
 
     document.addEventListener("view-change",

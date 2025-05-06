@@ -1,7 +1,7 @@
 @import "./button.css";
 @import "./color-select.css";
 @import "./dialog.css";
-/* @import "./event-details.css"; */
+@import "./event-details.css";
 @import "./event-list.css";
 @import "./event.css";
 /* @import "./fab.css"; */
@@ -17,21 +17,20 @@
 @import "./week-calendar.css";
 @import "./responsive.css";
 
-
-*{
-    font-family: ui-sans-serif,system-ui,sans-serif;
+* {
+    font-family: ui-sans-serif, system-ui, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-size: 16px;
     line-height: 1.5;
     color: var(--color-text-dark);
 }
 
-:root{
+:root {
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-md: 1rem;
@@ -74,22 +73,22 @@ body{
     --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
-.app{
+.app {
     height: 100vh;
-
 }
-.main{
+
+.main {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.calender{
+.calendar {
     height: 100%;
 }
 
-@media (mid-width:768px){
-    .app{
+@media (min-width: 768px) {
+    .app {
         display: grid;
         grid-template-columns: auto 1fr;
     }

@@ -59,6 +59,18 @@
     font-weight: 500;
 }
 
+.dialog_header-actions{
+    display: flex;
+    align-items: stretch;
+    gap:0.5rem;
+}
+
+.dialog_header-actions-divider{
+    flex-shrink: 0;
+    width: 1px;
+    background-color: var(--color-gray-100);
+}
+
 .dialog__content{
     flex: 1 1 auto;
     overflow-y: auto;

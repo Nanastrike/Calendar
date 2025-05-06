@@ -5,11 +5,13 @@ import { initEventStore } from "./event-store.js";
 import { initNotification } from "./notification.js";
 import {initCalendar} from "./calender.js";
 import { initNav } from "./nav.js";
+import { initEventDetailsDialog } from "./event-details-dialog.js";
 
 const eventStore = initEventStore();
 initCalendar(eventStore);
 initEventCreateButton();
 initEventFormDialog();
+initEventDetailsDialog();
 initNotification();
 initViewSelect();
 initNav();

@@ -1,4 +1,4 @@
-import { waitUntilAnimationsFinish} from "./animation.js";
+import { waitUntilAnimationsFinish } from "./animation.js";
 
 export function initToaster(parent) {
     const toasterElement = document.createElement("div");
@@ -12,7 +12,7 @@ export function initToaster(parent) {
         },
         error(message) {
             showToast(toasterElement, message, "error");
-        },
+        }
     };
 }
 
@@ -37,20 +37,20 @@ function animateToast(toasterElement, toastElement) {
     const heightDiff = heightAfter - heightBefore;
 
     const toasterAnimation = toasterElement.animate([
-        { transform:`translate(0,${heightDiff}px)`},
-        { transform:"translate(0,0)"}
-    ],{
-        duration:150,
-        easing:"ease-out"
+        { transform: `translate(0, ${heightDiff}px)` },
+        { transform: "translate(0, 0)" }
+    ], {
+        duration: 150,
+        easing: "ease-out"
     });
 
     toasterAnimation.startTime = document.timeline.currentTime;
-    
+
     waitUntilAnimationsFinish(toastElement)
-        .then(()=>{
+        .then(() => {
             toasterElement.removeChild(toastElement);
         })
-        .catch((error)=>{
-            console.error("Finish toast animation promise failed",error);
+        .catch((error) => {
+            console.error("Finish toast animation promise failed", error);
         });
 }

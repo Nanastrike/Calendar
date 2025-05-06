@@ -12,7 +12,7 @@ const dataFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 export function initWeekCalendar(parent, selectedDate, eventStore, isSingleDay) {
-    const calendarContent = calendarTemplateElement.content.cloneNoe(true);
+    const calendarContent = calendarTemplateElement.content.cloneNode(true);
     const calendarElement = calendarContent.querySelector("[data-week-calendar]");
     const calendarDayOfWeekListElement = calendarElement.querySelector("[data-week-calendar-day-of-week-list]");
     const calendarAllDayListElement = calendarElement.querySelector("[data-week-calendar-all-day-list]");
@@ -47,7 +47,7 @@ export function initWeekCalendar(parent, selectedDate, eventStore, isSingleDay) 
 }
 
 function initDayOfWeek(parent, selectedDate, weekDay) {
-    const calendarDayOfWeekContent = calendarDayOfWeekTemplateElement.content.cloneNoe(true);
+    const calendarDayOfWeekContent = calendarDayOfWeekTemplateElement.content.cloneNode(true);
     const calendarDayOfWeekElement = calendarDayOfWeekContent.querySelector("[data-week-calendar-day-of-week]");
     const calendarDayOfWeekButtonElement = calendarDayOfWeekElement.querySelector("[data-week-calendar-day-of-week-button]");
     const calendarDayOfWeekDayElement = calendarDayOfWeekElement.querySelector("[data-week-calendar-day-of-week-day]");
@@ -80,7 +80,7 @@ function initDayOfWeek(parent, selectedDate, weekDay) {
 }
 
 function initAllDayListItem(parent, events) {
-    const calendarAllDayListItemContent = calendarAllDayListItemTemplateElement.content.cloneNoe(true);
+    const calendarAllDayListItemContent = calendarAllDayListItemTemplateElement.content.cloneNode(true);
     const calendarAllDayListItemElement = calendarAllDayListItemContent.querySelector("[data-week-calendar-all-day-list-item]");
 
     initEventList(calendarAllDayListItemElement, events);

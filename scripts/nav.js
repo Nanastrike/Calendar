@@ -15,8 +15,8 @@ export function initNav() {
     let selectedDate = today();
 
     for(const todayButtonElement of todayButtonElements){
-        todayButtonElements.addEventListener("click",()=>{
-            todayButtonElements.dispatchEvent(new CustomEvent("date-change",{
+        todayButtonElement.addEventListener("click",()=>{
+            todayButtonElement.dispatchEvent(new CustomEvent("date-change",{
                 detail:{
                     date:today()
                 },

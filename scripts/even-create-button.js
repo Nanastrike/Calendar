@@ -2,7 +2,7 @@ import { today } from "./date.js";
 
 
 export function initEventCreateButton(){
-    const buttonElement = document.querySelector("[date-event-create-button]");
+    const buttonElement = document.querySelector("[data-event-create-button]");
 
     let selectedDate = today();
 
