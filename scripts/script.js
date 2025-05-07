@@ -1,5 +1,5 @@
 import {initViewSelect} from "./view-select.js";
-import { initEventCreateButton } from "./even-create-button.js";
+import { initEventCreateButtons } from "./even-create-button.js";
 import { initEventFormDialog } from "./event-form-dialog.js";
 import { initEventStore } from "./event-store.js";
 import { initNotification } from "./notification.js";
@@ -8,10 +8,13 @@ import { initNav } from "./nav.js";
 import { initEventDetailsDialog } from "./event-details-dialog.js";
 import { initEventDeleteDialog } from "./event-delete-dialog.js";
 import { initMiniCalendars } from "./mini-calendar.js";
+import { initResponsive } from "./responsive.js";
+import { initHamburger } from "./hamburger.js";
+import { initMobileSideBar } from "./mobile-sidebar.js";
 
 const eventStore = initEventStore();
 initCalendar(eventStore);
-initEventCreateButton();
+initEventCreateButtons();
 initEventFormDialog();
 initEventDetailsDialog();
 initNotification();
@@ -19,3 +22,6 @@ initViewSelect();
 initNav();
 initEventDeleteDialog();
 initMiniCalendars();
+initResponsive();
+initHamburger();
+initMobileSideBar();

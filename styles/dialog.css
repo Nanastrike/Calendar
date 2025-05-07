@@ -11,10 +11,19 @@
     overflow: hidden;
 }
 
+.dialog--sidebar{
+    justify-content: flex-start;
+}
+
 .dialog[open]{
     display: flex;
     animation: open-dialog var(--duration-sm)
     forwards ease-out;
+}
+
+.dialog--sidebar[open]{
+    animation: open-sidebar-dialog;
+    animation-duration: var(--duration-md);
 }
 
 .dialog[open]::backdrop{
@@ -27,8 +36,21 @@
     animation: close-dialog var(--duration-sm) forwards ease-out;
 }
 
+.dialog--sidebar .dialog--closing[open]{
+    animation: close-sidebar-dialog;
+    animation-duration: var(--duration-md);
+}
+
 .dialog--closing[open]::backdrop{
     animation: close-backdrop var(--duration-sm) forwards ease-out;
+}
+
+.dialog--sidebar[open]::backdrop{
+    animation-duration: var(--duration-md);
+}
+
+.dialog--sidebar .dialog--closing[open]::backdrop{
+    animation-duration: var(--duration-md);
 }
 
 .dialog__wrapper{
@@ -42,6 +64,15 @@
     gap: 1.5rem;
     padding: 1.5rem 0;
     max-height: calc(100vh -2rem);
+}
+
+.dialog--sidebar .dialog__wrapper{
+    margin: 0;
+    max-height: unset;
+    height: 100%;
+    width: 18rem;
+    padding: 1rem;
+    border-radius: 0;
 }
 
 .dialog__header{
@@ -77,6 +108,10 @@
     padding: 0 1.5rem;
 }
 
+.dialog--sidebar .dialog__content{
+    padding: 0;
+}
+
 .dialog__footer{
     flex: 0 0 auto;
     padding: 0 1.5rem;
@@ -97,6 +132,24 @@
         transform: scale(1);
         opacity: 1;
     }
+}
+
+@keyframes open-sidebar-dialog{
+from{
+    transform: translateX(-100%);
+}
+to{
+    transform: translateX(0);
+}
+}
+
+@keyframes close-sidebar-dialog{
+    from{
+        transform: translate(0);
+    }
+    to{
+        transform: translateX(-100%);
+    } 
 }
 
 @keyframes open-backdrop{
