@@ -11,6 +11,8 @@ import { initMiniCalendars } from "./mini-calendar.js";
 import { initResponsive } from "./responsive.js";
 import { initHamburger } from "./hamburger.js";
 import { initMobileSideBar } from "./mobile-sidebar.js";
+import { initUrl } from "./url.js";
+import { initSync } from "./sync.js";
 
 const eventStore = initEventStore();
 initCalendar(eventStore);
@@ -25,3 +27,5 @@ initMiniCalendars();
 initResponsive();
 initHamburger();
 initMobileSideBar();
+initUrl();
+initSync();

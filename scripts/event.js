@@ -101,7 +101,7 @@ export function adjustDynamicEventMaxLines(dynamicEventElement) {
     const padding = 8;
     const maxTitleLines = Math.floor((availableHeight - lineHeight - padding) / lineHeight);
 
-    dynamicEventElement.style.setProperty("--event-title-max-line");
+    dynamicEventElement.style.setProperty("--event-title-max-line", maxTitleLines);
 }
 
 export function generateEventId(){
