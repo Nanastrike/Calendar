@@ -10,7 +10,7 @@ import { initEventDeleteDialog } from "./event-delete-dialog.js";
 import { initMiniCalendars } from "./mini-calendar.js";
 import { initResponsive } from "./responsive.js";
 import { initHamburger } from "./hamburger.js";
-import { initMobileSideBar } from "./mobile-sidebar.js";
+import { initMobileSidebar } from "./mobile-sidebar.js";
 import { initUrl } from "./url.js";
 import { initSync } from "./sync.js";
 
@@ -26,6 +26,6 @@ initEventDeleteDialog();
 initMiniCalendars();
 initResponsive();
 initHamburger();
-initMobileSideBar();
+initMobileSidebar();
 initUrl();
 initSync();

@@ -1,13 +1,13 @@
 import { initDialog } from "./dialog.js";
 
-export function initMobileSideBar(){
+export function initMobileSidebar() {
     const dialog = initDialog("mobile-sidebar");
 
-    document.addEventListener("mobile-sidebar-open-request",()=>{
+    document.addEventListener("mobile-sidebar-open-request", () => {
         dialog.open();
     });
 
-    document.addEventListener("date-change",()=>{
+    document.addEventListener("date-change", () => {
         dialog.close();
     });
 }

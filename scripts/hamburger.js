@@ -1,7 +1,9 @@
-export function initHamburger(){
-    const hamburgergetButtonElement = document.querySelector("[data-hamburger-button]");
+export function initHamburger() {
+    const hamburgetButtonElement = document.querySelector("[data-hamburger-button]");
 
-    hamburgergetButtonElement.addEventListener("click",()=>{
-        hamburgergetButtonElement.dispatchEvent(new CustomEvent("mobile-sidebar-open-request",{bubble:true}));
+    hamburgetButtonElement.addEventListener("click", () => {
+        hamburgetButtonElement.dispatchEvent(new CustomEvent("mobile-sidebar-open-request", {
+            bubbles: true
+        }));
     });
 }

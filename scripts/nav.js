@@ -1,9 +1,9 @@
-import { today,addDays,addMonths,subtractDays,subtractMonths } from "./date.js";
-import { getUrlDate,getUrlView } from "./url.js";
+import { today, addDays, addMonths, subtractDays, subtractMonths } from "./date.js";
+import { getUrlDate, getUrlView } from "./url.js";
 
-const dateFormatter = new Intl.DateTimeFormat("en-US",{
-    month:"long",
-    year:"numeric"
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric"
 });
 
 export function initNav() {
@@ -15,71 +15,71 @@ export function initNav() {
     let selectedView = getUrlView();
     let selectedDate = getUrlDate();
 
-    for(const todayButtonElement of todayButtonElements){
-        todayButtonElement.addEventListener("click",()=>{
-            todayButtonElement.dispatchEvent(new CustomEvent("date-change",{
-                detail:{
-                    date:today()
+    for (const todayButtonElement of todayButtonElements) {
+        todayButtonElement.addEventListener("click", () => {
+            todayButtonElement.dispatchEvent(new CustomEvent("date-change", {
+                detail: {
+                    date: today()
                 },
-                bubbles:true
+                bubbles: true
             }));
         });
     }
 
-    previousButtonElement.addEventListener("click",()=>{
-        previousButtonElement.dispatchEvent(new CustomEvent("date-change",{
-            detail:{
-                date:getPreviousDate(selectedView,selectedDate)
+    previousButtonElement.addEventListener("click", () => {
+        previousButtonElement.dispatchEvent(new CustomEvent("date-change", {
+            detail: {
+                date: getPreviousDate(selectedView, selectedDate)
             },
-            bubbles:true
+            bubbles: true
         }));
     });
 
-    nextButtonElement.addEventListener("click",()=>{
-        nextButtonElement.dispatchEvent(new CustomEvent("date-change",{
-            detail:{
-                date:getNextDate(selectedView,selectedDate)
+    nextButtonElement.addEventListener("click", () => {
+        nextButtonElement.dispatchEvent(new CustomEvent("date-change", {
+            detail: {
+                date: getNextDate(selectedView, selectedDate)
             },
-            bubbles:true
+            bubbles: true
         }));
     });
 
-    document.addEventListener("view-change",(event)=>{
+    document.addEventListener("view-change", (event) => {
         selectedView = event.detail.view;
     });
 
-    document.addEventListener("date-change",(event)=>{
+    document.addEventListener("date-change", (event) => {
         selectedDate = event.detail.date;
-        refreshDateElement(dateElement,selectedDate);
+        refreshDateElement(dateElement, selectedDate);
     });
-    
-    refreshDateElement(dateElement,selectedDate);
+
+    refreshDateElement(dateElement, selectedDate);
 }
 
-function refreshDateElement(dateElement,selectedDate){
+function refreshDateElement(dateElement, selectedDate) {
     dateElement.textContent = dateFormatter.format(selectedDate);
 }
 
-function getPreviousDate(selectedView,selectedDate){
-    if(selectedView === "day"){
-        return subtractDays(selectedDate,1);
+function getPreviousDate(selectedView, selectedDate) {
+    if (selectedView === "day") {
+        return subtractDays(selectedDate, 1);
     }
 
-    if(selectedView === "week"){
-        return subtractDays(selectedDate,7);
+    if (selectedView === "week") {
+        return subtractDays(selectedDate, 7);
     }
 
-    return subtractMonths(selectedDate,1);
+    return subtractMonths(selectedDate, 1);
 }
 
-function getNextDate(selectedView,selectedDate){
-    if(selectedView === "day"){
-        return addDays(selectedDate,1);
+function getNextDate(selectedView, selectedDate) {
+    if (selectedView === "day") {
+        return addDays(selectedDate, 1);
     }
 
-    if(selectedView === "week"){
-        return addDays(selectedDate,7);
+    if (selectedView === "week") {
+        return addDays(selectedDate, 7);
     }
 
-    return addMonths(selectedDate,1);
+    return addMonths(selectedDate, 1);
 }

@@ -1,35 +1,36 @@
-const isDesktopMediaQuery = window.matchMedia("(min-width:768px)");
+const isDesktopMediaQuery = window.matchMedia("(min-width: 768px)");
 
-export function initResponsive(){
-    if(currentDeviceType() === "mobile"){
-        document.dispatchEvent(new CustomEvent("view-change",{
-            detail:{
-                view:"week"
+export function initResponsive() {
+    if (currentDeviceType() === "mobile") {
+        document.dispatchEvent(new CustomEvent("view-change", {
+            detail: {
+                view: "week"
             },
-            bubbles:true
+            bubbles: true
         }));
     }
 
-    isDesktopMediaQuery.addEventListener("change",()=>{
+    isDesktopMediaQuery.addEventListener("change", () => {
         const deviceType = currentDeviceType();
 
-        document.dispatchEvent(new CustomEvent("device-type-change",{
-            detail:{
+        document.dispatchEvent(new CustomEvent("device-type-change", {
+            detail: {
                 deviceType
             },
-            bubbles:true
+            bubbles: true
         }));
-        if(deviceType() === "mobile"){
-            document.dispatchEvent(new CustomEvent("view-change",{
-                detail:{
-                    view:"week"
+
+        if (deviceType === "mobile") {
+            document.dispatchEvent(new CustomEvent("view-change", {
+                detail: {
+                    view: "week"
                 },
-                bubbles:true
+                bubbles: true
             }));
         }
     });
 }
 
-export function currentDeviceType(){
+export function currentDeviceType() {
     return isDesktopMediaQuery.matches ? "desktop" : "mobile";
 }
