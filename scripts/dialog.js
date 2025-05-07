@@ -7,7 +7,7 @@ export function initDialog(name){
     function close(){
         dialogElement.classList.add("dialog--closing");
         
-        waitUntilAnimationsFinish(dialogElement).then(()=>{
+        return waitUntilAnimationsFinish(dialogElement).then(()=>{
             //确保二次点击时dialog会弹出
             dialogElement.classList.remove("dialog--closing");
             dialogElement.close();
@@ -41,7 +41,7 @@ export function initDialog(name){
             dialogElement.showModal();
         },
         close(){
-            close();
+            return close();
         }
     };
 }
